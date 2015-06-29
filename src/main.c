@@ -109,9 +109,6 @@ static void main_window_load(Window *window) {
   //create the bitmap layer and make it the same size as the window so that it takes up the whole screen
   image_layer = bitmap_layer_create(bounds);
   
-  
-  bitmap_layer_set_background_color(image_layer, GColorClear);
-  
   //load up frames of animation into the bitmap objects we established at the top of the code
   //TODO: remember to come back and swap these PNGs out for non-transparent resources, so to 
   //simplify the resource id needed to instantiate them.
@@ -130,6 +127,7 @@ static void main_window_load(Window *window) {
   //set the initial frame that we want to appear on the screen when the app loads up
   bitmap_layer_set_bitmap(image_layer, seasick_the_cat_bmp_01);
 
+  //add the configured image layer to the window layer.
   layer_add_child(window_layer, bitmap_layer_get_layer(image_layer));
 }
 
@@ -168,6 +166,7 @@ static void init() {
    
 }
 
+//
 static void deinit() {
   accel_data_service_unsubscribe();
   window_destroy(window);
